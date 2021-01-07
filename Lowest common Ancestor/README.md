@@ -1,6 +1,7 @@
 
 Lowest Common Ancestor in a BST 
 Easy Accuracy: 50.22% Submissions: 56222 Points: 2
+
 Given a Binary Search Tree (with all values unique) and two node values. Find the Lowest Common Ancestors of the two nodes in the BST.
 
 Example 1:
