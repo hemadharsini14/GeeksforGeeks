@@ -1,0 +1,42 @@
+class BST
+{   
+    // Returns the LCA of the nodes with values n1 and n2
+    // in the BST rooted at 'root' 
+	Node LCA(Node root, int n1, int n2)
+	{
+        ArrayList<Node>path1 = new ArrayList<>();
+        ArrayList<Node>path2 = new ArrayList<>();
+        find_path(root,n1,path1);
+        find_path(root,n2,path2);
+       
+        for(int i=path1.size()-1;i>=0;i--)
+        {
+            Node temp = path1.get(i);
+            
+            if(path2.contains(temp))
+            {
+                return temp;
+            }
+        }
+        return null;
+	}
+    void find_path(Node root, int n1,ArrayList<Node>path1)
+    {
+        if(root == null || root.data == n1)
+        {
+            path1.add(root);
+            return;
+        }
+        else if(root.data<n1)
+        {
+            path1.add(root);
+            find_path(root.right,n1,path1);
+        }
+        else if(root.data>n1)
+        {
+            path1.add(root);
+            find_path(root.left,n1,path1);
+        }
+    }
+    
+}
