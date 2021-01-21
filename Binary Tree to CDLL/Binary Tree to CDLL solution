@@ -1,0 +1,42 @@
+class Tree
+{ 
+    Node head = null;
+    Node tail = null;
+    Node bTreeToClist(Node root)
+    {
+        inorder(root);
+        return head;
+    }
+    void inorder(Node root)
+    {
+        if(root != null)
+        {
+            inorder(root.left);
+            insert(root.data);
+            inorder(root.right);
+            
+        }
+    }
+    void insert(int data)
+    {
+        Node newone = new Node(data);
+        if(head == null)
+        {
+            head = newone;
+            newone.left = head;
+            newone.right = head;
+            tail = head;
+            
+        }
+        else
+        {
+            newone.left = tail;
+            newone.right = head;
+            head.left = newone;
+            tail.right = newone;
+            tail = newone;
+        }
+    }
+    
+}
+    
