@@ -1,0 +1,27 @@
+class Tree
+{
+     // Recursive function to print right view of a binary tree.
+     ArrayList<Integer> Kdistance(Node root, int k)
+     {
+        ArrayList<Integer>arr = new ArrayList<>();
+        lot(arr,root,k);
+        return arr;
+        
+     }
+     void lot(ArrayList<Integer>arr,Node root, int k)
+     {
+         if(root == null)
+         {
+             return;
+         }
+         else if(k==0)
+         {
+             arr.add(root.data);
+         }
+         else
+         {
+             lot(arr,root.left,k-1);
+             lot(arr,root.right,k-1);
+         }
+     }
+}
