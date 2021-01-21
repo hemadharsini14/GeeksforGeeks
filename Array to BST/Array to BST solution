@@ -1,0 +1,47 @@
+class Solution
+{
+
+    public int[] sortedArrayToBST(int[] nums)
+    {
+        int n = nums.length;
+        int res[] = new int[n];
+        int inc[] = new int[1];
+        inc[0]  = 0;
+        node root = bst(nums,0,n-1);
+        pre(root,res,inc);
+        return res;
+        
+    }
+    void pre(node root,int res[],int inc[])
+    {
+        if(root != null)
+        {
+            //System.out.println(root.data);
+            res[inc[0]++] = root.data;
+            pre(root.left,res,inc);
+            pre(root.right,res,inc);
+        }
+    }
+    node bst(int[] nums,int begin,int end)
+    {
+        if(begin>end)
+        {
+            return null;
+        }
+        int mid = (begin+end)/2;
+        node root = new node(nums[mid]);
+        root.left = bst(nums,begin,mid-1);
+        root.right = bst(nums,mid+1,end);
+        return root;
+    }
+}
+class node
+{
+    int data;
+    node left,right;
+    node(int data)
+    {
+        this.data  = data;
+        left = right = null;
+    }
+}
