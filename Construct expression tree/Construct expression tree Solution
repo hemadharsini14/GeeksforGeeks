@@ -1,0 +1,39 @@
+class GfG
+{
+    
+    public static Node constructTree(char postfix[])
+    {
+        Stack<Node>st = new Stack<>();
+        for(int i=0;i<postfix.length;i++)
+        {
+            Node root = new Node(postfix[i]);
+           
+            if(isop(postfix[i]))
+            {
+                Node op1 = st.pop();
+                Node op2 = st.pop();
+                root.left = op2;
+                root.right = op1;
+                st.push(root);
+                
+            }
+            else
+            {
+                st.push(root);
+                // System.out.print(root.val+" ");
+            }
+        }
+        //System.out.println();
+        Node t = st.pop();
+        st.clear();
+        return t;
+    }
+    static boolean isop(char op)
+    {
+        if(op=='+' || op=='-' || op=='*' || op=='/' || op=='^')
+        {
+            return true;
+        }
+        return false;
+    }
+}
