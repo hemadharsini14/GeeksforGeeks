@@ -1,0 +1,38 @@
+class GfG {
+    Tree root = null;
+    public static Tree convert(Node head, Tree node) {
+        if(head  == null)
+        {
+            return null;
+        }
+        
+      
+       Node temp = head;
+       node = new Tree(head.data);
+        Queue<Tree>q = new LinkedList<>();
+       q.add(node);
+       temp=temp.next;
+       while(temp != null)
+       {
+           Tree t = q.poll();
+           
+           if(temp != null)
+           {
+               t.left = new Tree(temp.data);
+               q.add(t.left);
+               temp = temp.next;
+           }
+           if(temp != null)
+           {
+                t.right = new Tree(temp.data);
+               q.add(t.right);
+               temp = temp.next;   
+           }
+           
+       }
+       return node;
+    }
+    
+    
+}
+    
