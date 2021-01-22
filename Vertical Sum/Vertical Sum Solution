@@ -1,0 +1,33 @@
+class Tree{
+    public ArrayList <Integer> verticalSum(Node root) {
+        ArrayList<Integer>arr = new ArrayList<>();
+        TreeMap<Integer,Integer>map = new TreeMap<>();
+        v_traverse(root,map,0);
+        for(Map.Entry m: map.entrySet())
+        {
+            //System.out.println("Id "+m.getKey()+" sum "+m.getValue());
+            arr.add((Integer)m.getValue());
+        }
+        return arr;
+    }
+    void v_traverse(Node root,TreeMap<Integer,Integer>map,int id )
+    {
+        if(root == null)
+        {
+            return ;
+        }
+        if(!map.containsKey(id))
+        {
+            map.put(id,root.data);
+        }
+        else
+        {
+            int sum = map.get(id);
+            map.put(id,sum+root.data);
+        }
+        v_traverse(root.left,map,id-1);
+        v_traverse(root.right,map,id+1);
+        
+        
+    }
+}
