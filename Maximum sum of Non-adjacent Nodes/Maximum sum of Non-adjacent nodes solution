@@ -1,0 +1,30 @@
+class GFG
+{
+    static int getMaxSum(Node root)
+    {
+        if(root == null)
+        {
+            return 0;
+        }
+        int inc_root = root.data+grandchild(root);
+        int exc_root = getMaxSum(root.left)+getMaxSum(root.right);
+        return Math.max(inc_root,exc_root);
+    }
+    static int grandchild(Node root)
+    {
+        int sum = 0;
+        if(root == null)
+        {
+            return 0;
+        }
+        if(root.left != null)
+        {
+            sum = sum+getMaxSum(root.left.left)+getMaxSum(root.left.right);
+        }
+        if(root.right != null)
+        {
+            sum = sum+getMaxSum(root.right.left)+getMaxSum(root.right.right);
+        }
+        return sum;
+    }
+}
