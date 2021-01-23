@@ -1,0 +1,50 @@
+class Solution {
+    /*
+    The structure of the node class is:
+    class Node {
+    int data;
+    Node left, right;
+        public Node(int data){
+            this.data = data;
+        }
+    }
+    */
+    
+    public int pairs(Node root){
+        ArrayList<Integer>arr = new ArrayList<Integer>();
+        
+        int count[] = new int[1];
+        count[0]=0;
+        //pairs_violate(root,count);
+        inorder(root,arr);
+        for(int i=0;i<arr.size();i++)
+        {
+            for(int j=i+1;j<arr.size();j++)
+            {
+                if(arr.get(i)>arr.get(j))
+                {
+                    //int temp1 = arr.get(i);
+                    //int temp2 = arr.get(j);
+                    //arr.add(i,temp2);
+                    
+                    //arr.add(j,temp1);
+                    count[0]++;
+                }
+            }
+        }
+
+        return count[0];
+    }
+    void inorder(Node root,ArrayList<Integer>arr)
+    {
+        if(root != null)
+        {
+            inorder(root.left,arr);
+            arr.add(root.data);
+             inorder(root.right,arr);
+            
+        }
+    }
+    
+
+}
