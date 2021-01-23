@@ -1,0 +1,25 @@
+class GfG
+{
+    public static int sumOfLeafNodes(Node root)
+    {
+        int sum[] = new int[1];
+        sum[0] = 0;
+        sum_of_leaves(root,sum);
+        return sum[0];
+        
+    }
+    static void sum_of_leaves(Node root,int sum[])
+    {
+        if(root != null)
+        {
+            sum_of_leaves(root.left,sum);
+            if(root.left==null && root.right==null)
+            {
+                sum[0]=sum[0]+root.data;
+            }
+            sum_of_leaves(root.right,sum);
+            
+        }
+        
+    }
+}
