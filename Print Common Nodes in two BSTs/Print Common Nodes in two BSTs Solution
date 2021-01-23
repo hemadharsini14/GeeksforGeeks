@@ -1,0 +1,38 @@
+*/
+class BST
+{
+	// print a list containing the intersection of the two BSTs in a sorted order
+	public static ArrayList<Integer> printCommon(Node root1,Node root2)
+    {
+        TreeMap<Integer,Boolean> map = new TreeMap<Integer,Boolean>();
+        ArrayList<Integer>res = new ArrayList<>();
+        root_insert(root1,map);
+        check(root2,map,res);
+        return res;
+        
+    }
+    static void root_insert(Node root,TreeMap<Integer,Boolean> map)
+    {
+        if(root!=null)
+        {
+            root_insert(root.left,map);
+            map.put(root.data,false);
+            root_insert(root.right,map);
+        }
+    }
+    static void check(Node root,TreeMap<Integer,Boolean> map,ArrayList<Integer>res)
+    {
+        if(root!=null)
+        {
+            check(root.left,map,res);
+            if(map.containsKey(root.data))
+            {
+                map.put(root.data,true);
+                res.add(root.data);
+            }
+            check(root.right,map,res);
+        }
+    }
+    
+    
+}
