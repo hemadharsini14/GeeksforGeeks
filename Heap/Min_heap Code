@@ -1,0 +1,108 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package datastructure;
+
+/**
+ *
+ * @author Hemadharsini
+ */
+public class Heap {
+    static int len = -1;
+    public static void main(String args[])throws Exception
+    {
+        //int arr[] = {44, 33, 77, 11, 55, 88, 66};
+        //int len = -1;
+        int arr[] = new int[7];
+        insert(arr,  44);
+         for(int i=0;i<7;i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+        System.out.println("");
+
+        //arr.toString();
+        //System.out.println(arr.toString());
+        insert(arr,  33);
+         for(int i=0;i<7;i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+        System.out.println("");
+
+       // System.out.println(arr.toString());
+        insert(arr,  77);
+         for(int i=0;i<7;i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+        System.out.println("");
+
+       // System.out.println(arr.toString());
+        insert(arr,  11);
+         for(int i=0;i<7;i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+        System.out.println("");
+
+       // System.out.println(arr);
+        insert(arr,  55);
+        for(int i=0;i<7;i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+        System.out.println("");
+        //System.out.println(arr);
+        insert(arr,  88);
+        for(int i=0;i<7;i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+         System.out.println("");
+       // System.out.println(arr);
+        insert(arr,  66);
+       // System.out.println(arr);
+       for(int i=0;i<7;i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+         System.out.println("");
+        
+    }
+    static void insert(int arr[],int data)
+    {
+        len++;
+        arr[len] = data;
+        int i = len;
+        System.out.println(len);
+         //int parent = (len-1)/2;
+        while(i>0)
+        {
+            int parent = (i-1)/2;
+            if(arr[parent]>=arr[i])
+            {
+                System.out.println("Heree");
+                swap(arr,parent,i);
+                i = parent;
+            }
+            else
+            {
+                return;
+            }
+        }
+    }
+    static void delete(int arr[])
+    {
+        swap(arr, 0, len-1);
+        len--;
+    }
+    static void swap(int arr[],int i,int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
